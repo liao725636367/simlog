@@ -68,9 +68,7 @@ func main() {
 
 ```
 
-​	效果：
 
-​	![image-20200415174405629](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200415174405629.png) 
 
 2.记录到文件方式
 
@@ -119,8 +117,3 @@ func main() {
 
 ```
 
-​	效果：
-
-​	![image-20200415174435625](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200415174435625.png) 
-
-![image-20200415174450333](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200415174450333.png) 
