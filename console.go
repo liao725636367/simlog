@@ -1,4 +1,4 @@
-package simLog
+package simlog
 
 import (
 	"fmt"
