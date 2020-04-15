@@ -45,7 +45,7 @@ func (l *ConsoleLogger) outPut( level logLevel,format string, a ...interface{}){
 	//格式化信息
 	 format=fmt.Sprintf(format,a...)
 
-	fmt.Fprintf(os.Stdout,"[%s] [%s] [%s:%s:%d]  %s",now,level.String(),fileName,funcName,lineNo,format )
+	fmt.Fprintf(os.Stdout,"[%s] [%s] [%s:%s:%d]  %s \n",now,level.String(),fileName,funcName,lineNo,format )
 }
 
 

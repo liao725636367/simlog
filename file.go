@@ -149,6 +149,9 @@ func (l *FileLogger) Fatal(format string, a ...interface{}){
 }
 //CheckFileSize 检测文件大小是否超出最大限制
 func (l *FileLogger) CheckFileSize(f *os.File) bool {
+	if l.maxFileSize == 0 {//如果设置切割大小为0表示不分割文件
+		return false
+	}
 	fileInfo,err:=f.Stat()
 	if err!=nil{
 		fmt.Printf("get file info failed err:%v\n",err)
@@ -156,6 +159,7 @@ func (l *FileLogger) CheckFileSize(f *os.File) bool {
 	}
 	//fmt.Println(fileInfo.Name(),fileInfo.Size(), l.maxFileSize)
 	//panic("结束")
+
 	return fileInfo.Size() > l.maxFileSize
 }
 //outPut 记录日志
@@ -226,7 +230,7 @@ func (l *FileLogger) flush()error{
 	defer mutex.Unlock()
 	var fileObj *os.File
 	var msg string
-	for levelStr,handler:=range l.fileHandlers{
+	for _,handler:=range l.fileHandlers{
 		if len(handler.buffer) > 0{
 
 				fileObj =handler.File
@@ -247,7 +251,7 @@ func (l *FileLogger) flush()error{
 
 			handler.buffer = nil
 			l.lastFlush=time.Now()
-			fmt.Println(l.fileHandlers[levelStr])
+			//fmt.Println(l.fileHandlers[levelStr])
 			fmt.Fprintf(fileObj,  msg)
 
 		}
